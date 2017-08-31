@@ -2,7 +2,11 @@
   <v-app light>
     <v-navigation-drawer temporary v-model="sideNav">
       <v-list>
-        <v-list-tile v-for="item in menuItems" :key="item.title">
+        <v-list-tile
+        v-for="item in menuItems"
+        :key="item.title"
+        router
+        :to="item.link">
           <v-list-tile-action>
             <v-icon left>{{item.icon}}</v-icon>
           </v-list-tile-action>
@@ -14,10 +18,17 @@
       <v-toolbar-side-icon
       class="hidden-sm-and-up"
       @click.stop="sideNav = !sideNav"></v-toolbar-side-icon>
-      <v-toolbar-title>Choo-Choo-Trains</v-toolbar-title>
+      <v-toolbar-title>
+        <router-link to="/" tag="span" style="cursor:pointer;">
+        Choo-Choo-Trains</router-link>
+        </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items class="hidden-xs-only">
-        <v-btn flat v-for="item in menuItems" :key="item.title">
+        <v-btn flat
+        v-for="item in menuItems"
+        :key="item.title"
+        router
+        :to="item.link">
           <v-icon left>{{item.icon}}</v-icon>{{item.title}}</v-btn>
       </v-toolbar-items>
     </v-toolbar>
@@ -35,12 +46,12 @@
       return {
         sideNav: false,
         menuItems: [
-          { icon: 'account_balance', title: 'Museums' },
-          { icon: 'train', title: 'Trains' },
-          { icon: 'today', title: 'Events' },
-          { icon: 'person', title: 'Profile' },
-          { icon: 'face', title: 'Sign Up' },
-          { icon: 'lock_open', title: 'Sign In' },
+          { icon: 'account_balance', title: 'Museums', link: '/museums' },
+          { icon: 'train', title: 'Trains', link: '/trains' },
+          { icon: 'today', title: 'Events', link: '/events' },
+          { icon: 'person', title: 'Profile', link: '/profile' },
+          { icon: 'face', title: 'Sign Up', link: '/signup' },
+          { icon: 'lock_open', title: 'Sign In', link: '/signin' },
         ],
       };
     },
