@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import Home from '@/components/Home';
 import Events from '@/components/events/Events';
+import Event from '@/components/events/Event';
 import CreateEvent from '@/components/events/CreateEvent';
 import Museums from '@/components/museums/Museums';
 import Trains from '@/components/trains/Trains';
@@ -23,6 +24,11 @@ export default new Router({
       path: '/events',
       name: 'Events',
       component: Events,
+    },
+    {
+      path: '/events/:id',
+      name: 'event',
+      component: Event,
     },
     {
       path: '/events/new',
